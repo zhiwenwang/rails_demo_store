@@ -5,5 +5,6 @@ Rails.application.routes.draw do
 
   namespace :backend do
     get 'dashboard', to:'dashboard#index'
+    resources :products
   end
 end
