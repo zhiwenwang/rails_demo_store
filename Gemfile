@@ -55,6 +55,6 @@ group :test do
 end
 
 group :production do
-  gem 'pg'
+  #su3sgem 'pg'
 end
 

@@ -1,7 +1,7 @@
 class Backend::ProductsController < Backend::BaseController
 
   def index
-    # TODO
+    @products = Product.includes(:user, :product).page(params[:page]).per(3)
   end
 
   def new
@@ -18,15 +18,24 @@ class Backend::ProductsController < Backend::BaseController
   end
 
   def edit
-    # TODO
+    if @product.update(product_params)
+      redirect_to backend_product_path
+    else
+      render :edit 
+    end
   end
 
   def update
-    # TODO
+    if @product.update(product_params)
+      redirect_to backend_product_path
+    else
+      render :edit 
+    end
   end
 
   def destroy
-    # TODO
+    @product.destroy
+    redirect_to backend_products_path
   end
 
   def product_params
